@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>RTB Tracker</title>
+	<!-- Favicons (created with http://realfavicongenerator.net/)-->
+	<link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-touch-icon-57x57.png"/>
+	<link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-touch-icon-60x60.png"/>
+	<link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" sizes="32x32"/>
+	<link rel="icon" type="image/png" href="img/favicons/favicon-16x16.png" sizes="16x16"/>
+	<link rel="manifest" href="img/favicons/manifest.json"/>
+	<link rel="shortcut icon" href="img/favicons/favicon.ico"/>
+	<meta name="msapplication-TileColor" content="#00a8ff"/>
+	<meta name="msapplication-config" content="img/favicons/browserconfig.xml"/>
+	<meta name="theme-color" content="#ffffff"/>
+	<!-- Normalize -->
+	<link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+	<!-- Owl -->
+	<link rel="stylesheet" type="text/css" href="css/owl.css"/>
+	<!-- Animate.css -->
+	<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.1.0/css/font-awesome.min.css"/>
+	<!-- Elegant Icons -->
+	<link rel="stylesheet" type="text/css" href="fonts/eleganticons/et-icons.css"/>
+	<!-- Main style -->
+	<link rel="stylesheet" type="text/css" href="css/cardio.css"/>
+	<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+	<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+	<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+	<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+	<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.amcharts.com/lib/3/pie.js"></script>
+<script src="js/charts.js"></script>
+</head>
+
+<body>
+
+	
+	<div class="preloader">
+		<img src="img/loader.gif" alt="Preloader image"/>
+	</div>
+	<nav class="navbar">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img src="img/logo.png" data-active-url="img/logo-active.png" alt=""/></a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right main-nav">
+					<li><a href="#intro">Reports</a></li>
+					<li><a href="#services">Services</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<header id="intro">
+		<div class="container">
+		<div class="row">
+		</div>
+		<div class="row">
+		</div>
+					<div class="row">
+						<div class="owl-twitter owl-carousel ">
+						<div class="item">
+						<div id="chartdiv"></div>
+						</div>
+						<div class="item">
+						<div id="chartdivPie"></div>
+						</div>
+						<div class="item">
+						<div id="chartdivTeamCapacity"></div>
+						</div>
+						</div>
+						</div>
+						</div>
+			
+	</header>
+	<section id="services" class="section section-padded">
+	<div class="col-lg-12">
+		<div class="col-lg-4"></div>
+		<div class="panel panel-default col-lg-4">
+			<div class="panel-heading">
+				<h3>PLEASE ENTER THE DETAILS</h3>
+			</div>
+
+			<div class="panel-body">
+				<form action="#" th:action="@{/searchManager}"
+					th:object="${searchObject}" method="post">
+					<div class="row">
+						<div align="left" class="col-lg-6">Team owning :</div>
+						<div align="center" class="col-lg-6">
+							<input id="developerName" type="text" th:field="*{teamOwning}" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div align="left" class="col-lg-6">Track :</div>
+						<div align="center" class="col-lg-6">
+							<input id="track" type="text" th:field="*{track}" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div align="left" class="col-lg-6">Category :</div>
+						<div align="center" class="col-lg-6">
+							<input id="category" type="text" th:field="*{category}" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div align="left" class="col-lg-6">Project Type :</div>
+						<div align="center" class="col-lg-6">
+							<input id="projectType" type="text" th:field="*{projectType}" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div align="left" class="col-lg-6">Implementation Date :</div>
+						<div align="center" class="col-lg-6">
+							<input id="implDate" type="text" th:field="*{implDate}" />
+						</div>
+					</div>
+					<div class="row">
+						<div align="left" class="col-lg-6">IO Number :</div>
+						<div align="center" class="col-lg-6">
+							<input id="sdlcPhase" type="text" th:field="*{ioNumber}" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div align="left" class="col-lg-6">Current SDLC Phase :</div>
+						<div align="center" class="col-lg-6">
+							<input id="sdlcPhase" type="text" th:field="*{sdlcPhase}" />
+						</div>
+					</div>
+					
+					<div class="row">
+						<div align="left" class="col-lg-6">Type of TDD :</div>
+						<div align="center" class="col-lg-6">
+							<input id="sdlcPhase" type="text" th:field="*{tddType}" />
+						</div>
+					</div>
+
+					<input type="submit" value="Fetch" name="fetch"   />
+					
+
+				</form>
+			</div>
+		</div>
+		<div class="col-lg-4"></div>
+	</div>
+
+	<div class="col-lg-12" th:unless="${#lists.isEmpty(projectListObject)}">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>PROJECT STATUS</h3>
+			</div>
+												<!--WaterFall Projects Start -->
+			<div class="panel-body" th:each="projects: ${projectListObject}" th:if="${projects.category} == 'WaterFall Projects'">
+				<table class="table table-condensed"
+					style="border-collapse: collapse;">
+					
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Project No</th>
+							<th>Project Name</th>
+							<th>Application Type</th>
+							<th>IO Number</th>
+							<th>Category</th>
+							<th>Project Type</th>
+							<th>Project Status</th>
+							<th>Implementation Date</th>
+							<th>Effort</th>
+							<th>Team Owning</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-toggle="collapse"
+							th:attr="data-target='#'+${projects.projectNo}"
+							class="accordion-toggle">
+							<td><button class="btn btn-default btn-xs">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</button></td>
+							<td th:text="${projects.projectNo}"></td>
+							<td th:text="${projects.projectName}"></td>
+							<td th:text="${projects.applicationType}"></td>
+							<td th:text="${projects.ioNumber}"></td>
+							<td th:text="${projects.category}"></td>
+							<td th:text="${projects.projectType}"></td>
+							<td th:text="${projects.projectStatus}"></td>
+							<td th:text="${projects.implDate}"></td>
+							<td th:text="${projects.effort}"></td>
+							<td th:text="${projects.teamOwning}"></td>
+						</tr>
+						<tr>
+							<td colspan="12" class="hiddenRow"><div
+									class="accordian-body collapse" th:id="${projects.projectNo}">
+									<table class="table table-striped"
+										>
+										<thead>
+											<tr>
+												<td><a href="${projects.projectFolder}">Project
+														Folder Link</a></td>
+												<td th:text="${projects.category}">Occupied</td>
+												<!-- <td>OBS Endpoint: end point</td> -->
+											</tr>
+											<tr>
+												<th>Analyze Start</th>
+												<th>Analyze End</th>
+												<th>Design Start</th>
+												<th>Design End</th>
+												<th>Actual Design End</th>
+												<th>Actual UTP Completion</th>
+												<th>Build Start</th>
+												<th>Build End</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td th:text="${projects.timelines.analyzeStart}"></td>
+												<td th:text="${projects.timelines.analyzeEnd}"></td>
+												<td th:text="${projects.timelines.designStart}"></td>
+												<td th:text="${projects.timelines.designEnd}"></td>
+												<td th:text="${projects.timelines.actualDesignEnd}"></td>
+												<td th:text="${projects.timelines.actualUTPCompletion}"></td>
+												<td th:text="${projects.timelines.buildStart}"></td>
+												<td th:text="${projects.timelines.buildEnd}"></td>
+											</tr>
+										</tbody>
+										<thead>
+											<tr>
+												<th>Actual UT End</th>
+												<th>Actual IT End</th>
+												<th>ICT Start</th>
+												<th>ICT End</th>
+												<th>Actual ICT Start</th>
+												<th>Actual ICT End</th>
+												<th>QC Drop</th>
+												<th>Actual QC Drop</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td th:text="${projects.timelines.actualUTEnd}"></td>
+												<td th:text="${projects.timelines.actualITEnd}"></td>
+												<td th:text="${projects.timelines.ictStart}"></td>
+												<td th:text="${projects.timelines.ictEnd}"></td>
+												<td th:text="${projects.timelines.actualICTStart}"></td>
+												<td th:text="${projects.timelines.actualICTEnd}"></td>
+												<td th:text="${projects.timelines.qcDrop}"></td>
+												<td th:text="${projects.timelines.actualQcDrop}"></td>
+												<td><a href="#" class="btn btn-default btn-sm"> <i
+														class="glyphicon glyphicon-cog"></i></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+													<!--WaterFall Projects End -->
+													<!--Agile Projects Start -->
+			
+			<div class="panel-body" th:each="projects: ${projectListObject}" th:if="${projects.category} == 'Agile Projects'">
+				<table class="table table-condensed"
+					style="border-collapse: collapse;">
+					
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Project No</th>
+							<th>Project Name</th>
+							<th>Application Type</th>
+							<th>IO Number</th>
+							<th>Category</th>
+							<th>Project Type</th>
+							<th>Project Status</th>
+							<th>Implementation Date</th>
+							<th>Effort</th>
+							<th>Team Owning</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-toggle="collapse"
+							th:attr="data-target='#'+${projects.projectNo}"
+							class="accordion-toggle">
+							<td><button class="btn btn-default btn-xs">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</button></td>
+							<td th:text="${projects.projectNo}"></td>
+							<td th:text="${projects.projectName}"></td>
+							<td th:text="${projects.applicationType}"></td>
+							<td th:text="${projects.ioNumber}"></td>
+							<td th:text="${projects.category}"></td>
+							<td th:text="${projects.projectType}"></td>
+							<td th:text="${projects.projectStatus}"></td>
+							<td th:text="${projects.implDate}"></td>
+							<td th:text="${projects.effort}"></td>
+							<td th:text="${projects.teamOwning}"></td>
+						</tr>
+						<tr>
+							<td colspan="12" class="hiddenRow"><div
+									class="accordian-body collapse" th:id="${projects.projectNo}">
+									<table class="table table-striped"
+										>
+										<thead>
+											<tr>
+												<td><a href="${projects.projectFolder}">Project
+														Folder Link</a></td>
+												<td th:text="${projects.category}">Occupied</td>
+												<!-- <td>OBS Endpoint: end point</td> -->
+											</tr>
+											<tr>
+												<th>Development Start</th>
+												<th>Development End</th>
+<!-- 												<th>Warranty Start</th> -->
+<!-- 												<th>Design End</th> -->
+<!-- 												<th>Actual Design End</th> -->
+<!-- 												<th>Actual UTP Completion</th> -->
+<!-- 												<th>Build Start</th> -->
+<!-- 												<th>Build End</th> -->
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td th:text="${projects.timelines.developmentStart}"></td>
+												<td th:text="${projects.timelines.developmentEnd}"></td>
+<!-- 												<td th:text="${projects.timelines.designStart}"></td> -->
+<!-- 												<td th:text="${projects.timelines.designEnd}"></td> -->
+<!-- 												<td th:text="${projects.timelines.actualDesignEnd}"></td> -->
+<!-- 												<td th:text="${projects.timelines.actualUTPCompletion}"></td> -->
+<!-- 												<td th:text="${projects.timelines.buildStart}"></td> -->
+<!-- 												<td th:text="${projects.timelines.buildEnd}"></td> -->
+											</tr>
+										</tbody>
+									</table>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+																<!--Agile Projects End -->
+																<!--CR Projects Start -->
+			<div class="panel-body" th:each="projects: ${projectListObject}" th:if="${projects.category} == 'CR'">
+			<div th:each="changeRequest: ${projects.changeRequests}"> 
+				<table class="table table-condensed"
+					style="border-collapse: collapse;">
+					
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Project No</th>
+							<th>Project Name</th>
+							<th>Project CR No</th>
+							<th>Description</th>
+							<th>CQ No</th>
+							<th>IO No</th>
+							<th>External / Internal</th>
+							<th>Team Owning</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-toggle="collapse"
+							th:attr="data-target='#'+${changeRequest.cRNo}+${projects.projectNo}+${projects.applicationType}"
+							class="accordion-toggle">
+							<td><button class="btn btn-default btn-xs">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</button></td>
+							<td th:text="${projects.projectNo}"></td>
+							<td th:text="${projects.projectName}"></td>
+							<td th:text="${changeRequest.cRNo}"></td>
+							<td th:text="${changeRequest.description}"></td>
+							<td th:text="${changeRequest.cqNumber}"></td>
+							<td th:text="${projects.ioNumber}"></td>
+							<td th:text="${changeRequest.cRType}"></td>
+							<td th:text="${projects.teamOwning}"></td>
+						</tr>
+						<tr>
+							<td colspan="12" class="hiddenRow"><div
+									class="accordian-body collapse" th:id="${changeRequest.cRNo}+${projects.projectNo}+${projects.applicationType}">
+									<table class="table table-striped"
+										>
+										<thead>
+											<tr>
+												<td><a href="${projects.projectFolder}">Project
+														Folder Link</a></td>
+												<td th:text="${projects.category}">Occupied</td>
+												<!-- <td>OBS Endpoint: end point</td> -->
+											</tr>
+											<tr>
+												<th>CR Work Start Date</th>
+												<th>CR Work End Date</th>
+												<th>QC Drop Date</th>
+												<th>CR Implementation</th> 
+												<th>Effort</th>
+												<th>Developer/s</th>
+ 												<th>SPOC</th> 
+												<th>OffShore TL</th> 
+												<th>Onsite TL</th> 
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td th:text="${changeRequest.cRStartDate}"></td>
+												<td th:text="${changeRequest.cREndDate}"></td>
+												<td th:text="${changeRequest.qcDropDate}"></td>
+												<td th:text="${changeRequest.cRImplDate}"></td>
+												<td th:text="${changeRequest.effort}"></td>	
+												<td>
+												<div th:each="resource: ${changeRequest.developers}" th:if="${resource.role} == 'Developer'" th:text="${resource.name}"></div>
+												</td>
+												<td>
+												<div th:each="resource: ${changeRequest.developers}" th:if="${resource.role} == 'SPOC'" th:text="${resource.name}"></div>
+												</td>
+												<td>
+												<div th:each="resource: ${changeRequest.developers}" th:if="${resource.role} == 'Offshore TL'" th:text="${resource.name}"></div>
+												</td>
+												<td>
+												<div th:each="resource: ${changeRequest.developers}" th:if="${resource.role} == 'Onsite TL'" th:text="${resource.name}"></div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</div>
+															<!--CR Projects End -->
+																<!--RMP Projects Start -->
+			<div class="panel-body" th:each="projects: ${projectListObject}" th:if="${projects.category} == 'RMP'">
+				<table class="table table-condensed"
+					style="border-collapse: collapse;">
+					
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>CR/CQ No</th>
+							<th>Description</th>
+							<th>IO Number</th>
+							<th>Priority</th>
+							<th>Stage/ Work Status</th>
+							<th>Work Start Date</th>
+							<th>Work End Date</th>
+							<th>Implementation Date</th> 
+							<th>Effort</th> 
+							<th>Team Owning</th> 
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-toggle="collapse"
+							th:attr="data-target='#'+${projects.projectNo}"
+							class="accordion-toggle">
+							<td><button class="btn btn-default btn-xs">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</button></td>
+							<td th:text="${projects.projectNo}"></td>
+							<td th:text="${projects.projectName}"></td>
+							<td th:text="${projects.applicationType}"></td>
+							<td th:text="${projects.ioNumber}"></td>
+							<td th:text="${projects.category}"></td>
+							<td th:text="${projects.projectType}"></td>
+							<td th:text="${projects.projectStatus}"></td>
+							<td th:text="${projects.implDate}"></td>
+							<td th:text="${projects.effort}"></td>
+							<td th:text="${projects.effort}"></td>
+						</tr>
+						<tr>
+							<td colspan="12" class="hiddenRow"><div
+									class="accordian-body collapse" th:id="${projects.projectNo}">
+									<table class="table table-striped"
+										>
+										<thead>
+											<tr>
+												<td><a href="${projects.projectFolder}">Project
+														Folder Link</a></td>
+												<td th:text="${projects.category}">Occupied</td>
+												<!-- <td>OBS Endpoint: end point</td> -->
+											</tr>
+											<tr>
+											<th>Developer</th>
+											<th>SPOC</th>
+											<th>OffShore TL</th> 
+											<th>Onsite TL</th> 
+											<th>Geographical State</th> 
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td th:text="${projects.timelines.developmentStart}"></td>
+												<td th:text="${projects.timelines.developmentEnd}"></td>
+												<td th:text="${projects.timelines.designStart}"></td>
+												<td th:text="${projects.timelines.designEnd}"></td>
+												<td th:text="${projects.timelines.designEnd}"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+																
+																<!--RMP Projects End -->
+																
+																<!--Misc Task Start -->
+			<div class="panel-body" th:each="projects: ${projectListObject}" th:if="${projects.category} == 'Misc'">
+				<table class="table table-condensed"
+					style="border-collapse: collapse;">
+					
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Project No</th>
+							<th>Project Name</th>
+							<th>Application Type</th>
+							<th>IO Number</th>
+							<th>Category</th>
+							<th>Project Type</th>
+							<th>Project Status</th>
+							<th>Implementation Date</th>
+							<th>Effort</th>
+							<th>Team Owning</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-toggle="collapse"
+							th:attr="data-target='#'+${projects.projectNo}"
+							class="accordion-toggle">
+							<td><button class="btn btn-default btn-xs">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</button></td>
+							<td th:text="${projects.projectNo}"></td>
+							<td th:text="${projects.projectName}"></td>
+							<td th:text="${projects.applicationType}"></td>
+							<td th:text="${projects.ioNumber}"></td>
+							<td th:text="${projects.category}"></td>
+							<td th:text="${projects.projectType}"></td>
+							<td th:text="${projects.projectStatus}"></td>
+							<td th:text="${projects.implDate}"></td>
+							<td th:text="${projects.effort}"></td>
+							<td th:text="${projects.teamOwning}"></td>
+						</tr>
+						<tr>
+							<td colspan="12" class="hiddenRow"><div
+									class="accordian-body collapse" th:id="${projects.projectNo}">
+									<table class="table table-striped"
+										>
+										<thead>
+											<tr>
+												<td><a href="${projects.projectFolder}">Project
+														Folder Link</a></td>
+												<td th:text="${projects.category}">Occupied</td>
+												<!-- <td>OBS Endpoint: end point</td> -->
+											</tr>
+											<tr>
+												<th>Development Start</th>
+												<th>Development End</th>
+<!-- 												<th>Warranty Start</th> -->
+<!-- 												<th>Design End</th> -->
+<!-- 												<th>Actual Design End</th> -->
+<!-- 												<th>Actual UTP Completion</th> -->
+<!-- 												<th>Build Start</th> -->
+<!-- 												<th>Build End</th> -->
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td th:text="${projects.timelines.developmentStart}"></td>
+												<td th:text="${projects.timelines.developmentEnd}"></td>
+<!-- 												<td th:text="${projects.timelines.designStart}"></td> -->
+<!-- 												<td th:text="${projects.timelines.designEnd}"></td> -->
+<!-- 												<td th:text="${projects.timelines.actualDesignEnd}"></td> -->
+<!-- 												<td th:text="${projects.timelines.actualUTPCompletion}"></td> -->
+<!-- 												<td th:text="${projects.timelines.buildStart}"></td> -->
+<!-- 												<td th:text="${projects.timelines.buildEnd}"></td> -->
+											</tr>
+										</tbody>
+									</table>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+																<!--Misc task End -->
+																
+		</div>
+
+	</div>
+	</section>
+	<!-- Scripts -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/typewriter.js"></script>
+	<script src="js/jquery.onepagenav.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+</html>

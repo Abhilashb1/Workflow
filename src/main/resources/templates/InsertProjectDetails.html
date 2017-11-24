@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Insert Project Here</title>
+<meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1" />
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script> -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	$(document).ready(function() {
+
+		displayProperties($("#category").val());
+
+		function displayProperties(value) {
+			if (value == 'Agile Projects') {
+				$("#analyzeStartDiv").hide();
+				$("#developmentStartDiv").show();
+				$("#analyzeEndDiv").hide();
+				$("#developmentEndDiv").show();
+				$("#designStartDiv").hide();
+				$("#designEndDiv").hide();
+				$("#buildStartDiv").hide();
+				$("#buildEndDiv").hide();
+				$("#ictStartDiv").hide();
+				$("#ictEndDiv").hide();
+				$("#qcDropDiv").hide();
+				$("#projectTypeDiv").show();
+				$("#cRDiv").hide();
+				$("#cRdescriptionDiv").hide();
+				$("#geographicStatesDiv").show();
+				$("#developerListDiv").show();
+				$("#cRdeveloperListDiv").hide();
+				$("#cRdevelopmentStartDiv").hide();
+				$("#cRdevelopmentEndDiv").hide();
+				$("#qcDropRMPDiv").hide();
+				$("#RMPDiv").hide();
+				$("#MiscdeveloperListDiv").hide();
+				$("#MiscdevelopmentStartDiv").hide();
+				$("#MiscdevelopmentEndDiv").hide();
+				$("#implDateDiv").show();
+				$("#MiscTaskNameDiv").hide();
+				$("#MiscTaskDescriptionDiv").hide();
+				$("#projectNameDiv").show();
+				$("#teamOwningDiv").show();
+				$("#taskDescriptionRMPDiv").hide();
+			} else if (value == 'CR') {
+				$("#analyzeStartDiv").hide();
+				$("#developmentStartDiv").hide();
+				$("#analyzeEndDiv").hide();
+				$("#developmentEndDiv").hide();
+				$("#designStartDiv").hide();
+				$("#designEndDiv").hide();
+				$("#buildStartDiv").hide();
+				$("#buildEndDiv").hide();
+				$("#ictStartDiv").hide();
+				$("#ictEndDiv").hide();
+				$("#qcDropDiv").hide();
+				$("#projectTypeDiv").hide();
+				$("#cRDiv").show();
+				$("#cRdescriptionDiv").show();
+				$("#geographicStatesDiv").hide();
+				$("#developerListDiv").hide();
+				$("#cRdeveloperListDiv").show();
+				$("#cRdevelopmentStartDiv").show();
+				$("#cRdevelopmentEndDiv").show();
+				$("#qcDropRMPDiv").hide();
+				$("#RMPDiv").hide();
+				$("#MiscdeveloperListDiv").hide();
+				$("#MiscdevelopmentStartDiv").hide();
+				$("#MiscdevelopmentEndDiv").hide();
+				$("#implDateDiv").show();
+				$("#MiscTaskNameDiv").hide();
+				$("#MiscTaskDescriptionDiv").hide();
+				$("#projectNameDiv").show();
+				$("#teamOwningDiv").show();
+				$("#effortDiv").show();
+				$("#taskDescriptionRMPDiv").hide();
+
+			} else if (value == 'WaterFall Projects') {
+				$("#analyzeStartDiv").show();
+				$("#developmentStartDiv").hide();
+				$("#analyzeEndDiv").show();
+				$("#developmentEndDiv").hide();
+				$("#designStartDiv").show();
+				$("#designEndDiv").show();
+				$("#buildStartDiv").show();
+				$("#buildEndDiv").show();
+				$("#ictStartDiv").show();
+				$("#ictEndDiv").show();
+				$("#qcDropDiv").show();
+				$("#projectTypeDiv").show();
+				$("#cRDiv").hide();
+				$("#cRdescriptionDiv").hide();
+				$("#geographicStatesDiv").show();
+				$("#developerListDiv").show();
+				$("#cRdeveloperListDiv").hide();
+				$("#cRdevelopmentStartDiv").hide();
+				$("#cRdevelopmentEndDiv").hide();
+				$("#qcDropRMPDiv").hide();
+				$("#RMPDiv").hide();
+				$("#MiscdeveloperListDiv").hide();
+				$("#MiscdevelopmentStartDiv").hide();
+				$("#MiscdevelopmentEndDiv").hide();
+				$("#implDateDiv").show();
+				$("#MiscTaskNameDiv").hide();
+				$("#MiscTaskDescriptionDiv").hide();
+				$("#projectNameDiv").show();
+				$("#teamOwningDiv").show();
+				$("#effortDiv").show();
+				$("#taskDescriptionRMPDiv").hide();
+			} else if (value == 'RMP') {
+
+				$("#analyzeStartDiv").hide();
+				$("#developmentStartDiv").show();
+				$("#analyzeEndDiv").hide();
+				$("#developmentEndDiv").show();
+				$("#designStartDiv").hide();
+				$("#designEndDiv").hide();
+				$("#buildStartDiv").hide();
+				$("#buildEndDiv").hide();
+				$("#ictStartDiv").hide();
+				$("#ictEndDiv").hide();
+				$("#qcDropDiv").hide();
+				$("#projectTypeDiv").hide();
+				$("#cRDiv").hide();
+				$("#cRdescriptionDiv").hide();
+				$("#geographicStatesDiv").show();
+				$("#developerListDiv").show();
+				$("#cRdeveloperListDiv").hide();
+				$("#cRdevelopmentStartDiv").hide();
+				$("#cRdevelopmentEndDiv").hide();
+				$("#qcDropRMPDiv").show();
+				$("#RMPDiv").show();
+				$("#MiscdeveloperListDiv").hide();
+				$("#MiscdevelopmentStartDiv").hide();
+				$("#MiscdevelopmentEndDiv").hide();
+				$("#implDateDiv").show();
+				$("#MiscTaskNameDiv").hide();
+				$("#MiscTaskDescriptionDiv").hide();
+				$("#projectNameDiv").hide();
+				$("#teamOwningDiv").show();
+				$("#effortDiv").show();
+				$("#taskDescriptionRMPDiv").show();
+
+			} else if (value == 'Misc') {
+				$("#analyzeStartDiv").hide();
+				$("#developmentStartDiv").hide();
+				$("#analyzeEndDiv").hide();
+				$("#developmentEndDiv").hide();
+				$("#designStartDiv").hide();
+				$("#designEndDiv").hide();
+				$("#buildStartDiv").hide();
+				$("#buildEndDiv").hide();
+				$("#ictStartDiv").hide();
+				$("#ictEndDiv").hide();
+				$("#qcDropDiv").hide();
+				$("#projectTypeDiv").hide();
+				$("#cRDiv").hide();
+				$("#cRdescriptionDiv").hide();
+				$("#geographicStatesDiv").hide();
+				$("#developerListDiv").hide();
+				$("#cRdeveloperListDiv").hide();
+				$("#cRdevelopmentStartDiv").hide();
+				$("#cRdevelopmentEndDiv").hide();
+				$("#qcDropRMPDiv").hide();
+				$("#RMPDiv").hide();
+				$("#MiscdeveloperListDiv").show();
+				$("#MiscdevelopmentStartDiv").show();
+				$("#MiscdevelopmentEndDiv").show();
+				$("#implDateDiv").hide();
+				$("#MiscTaskNameDiv").show();
+				$("#MiscTaskDescriptionDiv").show();
+				$("#projectNameDiv").hide();
+				$("#teamOwningDiv").hide();
+				$("#effortDiv").hide();
+				$("#taskDescriptionRMPDiv").hide();
+
+			} else {
+				$("#analyzeStartDiv").show();
+				$("#developmentStartDiv").hide();
+				$("#analyzeEndDiv").show();
+				$("#developmentEndDiv").hide();
+				$("#designStartDiv").show();
+				$("#designEndDiv").show();
+				$("#buildStartDiv").show();
+				$("#buildEndDiv").show();
+				$("#ictStartDiv").show();
+				$("#ictEndDiv").show();
+				$("#qcDropDiv").show();
+				$("#projectTypeDiv").show();
+				$("#cRDiv").hide();
+				$("#cRdescriptionDiv").hide();
+				$("#geographicStatesDiv").show();
+				$("#developerListDiv").show();
+				$("#cRdeveloperListDiv").hide();
+				$("#cRdevelopmentStartDiv").hide();
+				$("#cRdevelopmentEndDiv").hide();
+				$("#qcDropRMPDiv").hide();
+				$("#RMPDiv").hide();
+				$("#MiscdeveloperListDiv").hide();
+				$("#MiscdevelopmentStartDiv").hide();
+				$("#MiscdevelopmentEndDiv").hide();
+				$("#implDateDiv").show();
+				$("#MiscTaskNameDiv").hide();
+				$("#MiscTaskDescriptionDiv").hide();
+				$("#projectNameDiv").show();
+				$("#teamOwningDiv").show();
+				$("#effortDiv").show();
+				$("#taskDescriptionRMPDiv").hide();
+			}
+		}
+
+		$('#category').on('change', function() {
+			displayProperties(this.value);
+		});
+
+	});
+
+	/*]]>*/
+</script>
+</head>
+<body>
+	<div class="col-lg-12" style="background-color:#0b5696">
+		<div class="col-lg-2"></div>
+		<div class="panel panel-default col-lg-8">
+			<div class="panel-heading" style="background-color:#286090">
+				<h3 style="color:WHITE"> RTB WORK TRACKER</h3>
+			</div>
+
+			<div class="panel-body">
+
+				<form th:action="@{/insert}" th:object="${projectObject}"
+					method="post">
+					<ul th:if="${#fields.hasErrors('all')}" style="color:RED">
+						<li th:each="err : ${#fields.errors('all')}" th:text="${err}">Input
+							is incorrect</li>
+					</ul>
+					<div class="row">
+						<div align="left" class="col-md-3">Track :</div>
+						<div align="center" class="col-md-3">
+							<select style="width: 140px;" id="applicationType"
+								th:field="*{applicationType}">
+								<option value="">Select One</option>
+								<option value="Auto">Auto</option>
+								<option value="MCY">MCY</option>
+								<option value="Boats">Boats</option>
+								<option value="SPL">SPL</option>
+							</select>
+						</div>
+
+						<div id="analyzeStartDiv">
+							<div align="left" class="col-md-3">Analyze Start:</div>
+							<div align="center" class="col-md-3">
+								<input style="width: 140px;" id="analyzeStart" type="date"
+									th:field="*{timelines.analyzeStart}" />
+							</div>
+						</div>
+
+						<div id="developmentStartDiv">
+							<div align="left" class="col-md-3">Development Start:</div>
+							<div align="center" class="col-md-3">
+								<input style="width: 140px;" id="developmentStart" type="date"
+									th:field="*{timelines.developmentStart}" />
+							</div>
+						</div>
+
+						<div id="cRdevelopmentStartDiv">
+							<div align="left" class="col-md-3">Development Start:</div>
+							<div align="center" class="col-md-3">
+								<input style="width: 140px;" id="developmentStart" type="date"
+									th:field="*{changeRequests[0].cRStartDate}" />
+							</div>
+						</div>
+
+						<div id="MiscdevelopmentStartDiv">
+							<div align="left" class="col-md-3">Work Start:</div>
+							<div align="center" class="col-md-3">
+								<input style="width: 140px;" id="developmentStart" type="date"
+									th:field="*{timelines.developmentStart}" />
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div align="left" class="col-md-3">Category :</div>
+						<div align="center" class="col-md-3">
+							<select style="width: 140px;" id="category"
+								th:field="*{category}">
+								<option value="">Select One</option>
+								<option value="WaterFall Projects">WaterFall Projects</option>
+								<option value="Agile Projects">Agile Projects</option>
+								<option value="RMP">RMP</option>
+								<option value="Misc">Misc</option>
+								<option value="CR">CR</option>
+							</select>
+						</div>
+
+						<div id="analyzeEndDiv">
+							<div align="left" class="col-md-3">Analyze End:</div>
+							<div align="center" class="col-md-3">
+								<input style="width: 140px;" id="analyzeEnd" type="date"
+									th:field="*{timelines.analyzeEnd}" />
+							</div>
+						</div>
+
+						<div id="developmentEndDiv">
+							<div align="left" class="col-md-3">Development End:</div>
+							<div align="center" class="col-md-3">
+								<input style="width: 140px;" id="DevelopmentEnd" type="date"
+									th:field="*{timelines.developmentEnd}" />
+							</div>
+						</div>
+
+						<div id="cRdevelopmentEndDiv">
+							<div align="left" class="col-md-3">Development End:</div>
+							<div align="center" class="col-md-3">
+								<input style="width: 140px;" id="DevelopmentEnd" type="date"
+									th:field="*{changeRequests[0].cREndDate}" />
+							</div>
+						</div>
+
+						<div id="MiscdevelopmentEndDiv">
+							<div align="left" class="col-md-3">Work End:</div>
+							<div align="center" class="col-md-3">
+								<input style="width: 140px;" id="DevelopmentEnd" type="date"
+									th:field="*{timelines.developmentEnd}" />
+							</div>
+						</div>
+
+					</div>
+					<div class="row">
+						<div id="projectTypeDiv">
+							<div align="left" class="col-md-3">Project Type :</div>
+							<div align="center" class="col-md-3">
+								<select style="width: 140px;" id="projectType"
+									th:field="*{projectType}">
+									<option value="">Select One</option>
+									<option value="Regular">Regular</option>
+									<option value="Testing Support">Testing Support</option>
+									<option value="Test &amp; Support">Test &amp; Support</option>
+									<option value="Analysis Intensive">Analysis Intensive</option>
+									<option value="Analysis &amp; Test Support">Analysis
+										&amp; Test Support</option>
+								</select>
+							</div>
+						</div>
+
+						<div id="cRDiv">
+							<div align="left" class="col-md-3">CR Type :</div>
+							<div align="center" class="col-md-3">
+								<select style="width: 140px;" id="cRDiv"
+									th:field="*{changeRequests[0].cRType}">
+									<option value="">Select One</option>
+									<option value="External">External</option>
+									<option value="Internal">Internal</option>
+								</select>
+							</div>
+						</div>
+
+						<div id="RMPDiv">
+							<div align="left" class="col-md-3">Priority :</div>
+							<div align="center" class="col-md-3">
+								<select style="width: 140px;" id="RMPDiv" th:field="*{priority}">
+									<option value="">Select One</option>
+									<option value="High">High</option>
+									<option value="Medium">Medium</option>
+									<option value="Low">Low</option>
+								</select>
+							</div>
+						</div>
+						<div id="MiscTaskNameDiv">
+						<div align="left" class="col-md-3">Task Name :</div>
+						<div align="center" class="col-md-3">
+							<input id="taskName" style="width: 140px;" type="text"
+								th:field="*{taskName}" />
+						</div>
+						</div>
+
+						<div id="designStartDiv">
+							<div align="left" class="col-md-3">Design Start :</div>
+							<div align="center" class="col-md-3">
+								<input id="designStart" style="width: 140px;" type="date"
+									th:field="*{timelines.designStart}" />
+							</div>
+						</div>
+
+						<div id="cRdescriptionDiv">
+							<div align="left" class="col-md-3">Description :</div>
+							<div align="center" class="col-md-3">
+								<input id="cRdescription" style="width: 140px;" type="text"
+									th:field="*{changeRequests[0].description}" />
+							</div>
+						</div>
+
+						<div id="qcDropRMPDiv">
+							<div align="left" class="col-md-3">QC Drop :</div>
+							<div align="center" class="col-md-3">
+								<input id="qcDrop" style="width: 140px;" type="date"
+									th:field="*{timelines.qcDrop}" />
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+					<div id="implDateDiv">
+						<div align="left" class="col-md-3">Implementation Date :</div>
+						<div align="center" class="col-md-3">
+							<input id="implDate" style="width: 140px;" type="date"
+								th:field="*{implDate}" />
+						</div>
+						</div>
+						<div id="MiscTaskDescriptionDiv">
+						<div align="left" class="col-md-3">Task Description :</div>
+						<div align="center" class="col-md-3">
+							<input id="taskDescription" style="width: 140px;" type="text"
+								th:field="*{taskDescription}" />
+						</div>
+						</div>
+						<div id="designEndDiv">
+							<div align="left" class="col-md-3">Design End :</div>
+							<div align="center" class="col-md-3">
+								<input id="designEnd" style="width: 140px;" type="date"
+									th:field="*{timelines.designEnd}" />
+							</div>
+						</div>
+
+
+
+					</div>
+
+					<div class="row">
+						<div align="left" class="col-md-3">IO Number :</div>
+						<div align="center" class="col-md-3">
+							<input id="ioNumber" style="width: 140px;" type="text"
+								th:field="*{ioNumber}" />
+						</div>
+
+						<div id="buildStartDiv">
+							<div align="left" class="col-md-3">Build/UT Start :</div>
+							<div align="center" class="col-md-3">
+								<input id="buildStart" style="width: 140px;" type="date"
+									th:field="*{timelines.buildStart}" />
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+					<div id="projectNameDiv">
+						<div align="left" class="col-md-3">Project Name :</div>
+						<div align="center" class="col-md-3">
+							<input id="projectName" style="width: 140px;" type="text"
+								th:field="*{projectName}" />
+						</div>
+						</div>
+						
+						<div id="taskDescriptionRMPDiv">
+						<div align="left" class="col-md-3">Description :</div>
+						<div align="center" class="col-md-3">
+							<input id="taskDescription" style="width: 140px;" type="text"
+								th:field="*{taskDescription}" />
+						</div>
+						</div>
+
+						<div id="buildEndDiv">
+							<div align="left" class="col-md-3">Build/UT End :</div>
+							<div align="center" class="col-md-3">
+								<input id="buildEnd" style="width: 140px;" type="date"
+									th:field="*{timelines.buildEnd}" />
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+					<div id="effortDiv">
+						<div align="left" class="col-md-3">Effort :</div>
+						<div align="center" class="col-md-3">
+							<input id="effort" style="width: 140px;" type="text"
+								th:field="*{effort}" />
+						</div>
+					</div>
+						<div id="ictStartDiv">
+							<div align="left" class="col-md-3">ICT Start :</div>
+							<div align="center" class="col-md-3">
+								<input id="ictStart" style="width: 140px;" type="date"
+									th:field="*{timelines.ictStart}" />
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div id="geographicStatesDiv">
+							<div align="left" class="col-md-3">Geographic State :</div>
+							<div align="center" class="col-md-3">
+								<input id="geographicStates" style="width: 140px;" type="text"
+									th:field="*{geographicStates}" />
+							</div>
+						</div>
+						<div id="ictEndDiv">
+							<div align="left" class="col-md-3">ICT End :</div>
+							<div align="center" class="col-md-3">
+								<input id="ictEnd" style="width: 140px;" type="date"
+									th:field="*{timelines.ictEnd}" />
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+					<div id="teamOwningDiv">
+						<div align="left" class="col-md-3">Team Owning :</div>
+						<div align="center" class="col-md-3">
+							<select style="width: 140px;" id="teamOwning"
+								th:field="*{teamOwning}">
+								<option value="">Select One</option>
+								<option value="Release 1">Release 1</option>
+								<option value="Release 2">Release 2</option>
+							</select>
+						</div>
+					</div>
+						<div id="qcDropDiv">
+							<div align="left" class="col-md-3">QC Drop :</div>
+							<div align="center" class="col-md-3">
+								<input id="qcDrop" style="width: 140px;" type="date"
+									th:field="*{timelines.qcDrop}" />
+							</div>
+						</div>
+					</div>
+
+					<div id="developerListDiv">
+						<div class="row">
+							<div align="left" class="col-md-3">Resource Name:</div>
+							<div align="left" class="col-md-3">Role:</div>
+							<div align="left" class="col-md-3">Allocation Percentage:</div>
+							<div align="left" class="col-md-3">
+								<button type="submit" name="addRow">Add row</button>
+							</div>
+						</div>
+
+
+						<div class="row" th:each="row,rowStat : *{developers}">
+							<div align="left" class="col-md-3">
+								<select style="width: 140px;"
+									th:field="*{developers[__${rowStat.index}__].name}">
+									<option value="">Select One</option>
+									<option value="Vignesh">Vignesh</option>
+									<option value="Abhilash">Abhilash</option>
+								</select>
+							</div>
+							<div align="left" class="col-md-3">
+								<select style="width: 140px;"
+									th:field="*{developers[__${rowStat.index}__].role}">
+									<option value="">Select One</option>
+									<option value="Developer">Developer</option>
+									<option value="SPOC">SPOC</option>
+									<option value="Offshore TL">Offshore TL</option>
+									<option value="Onsite TL">Onsite TL</option>
+								</select>
+							</div>
+							<div align="left" class="col-md-3">
+								<input type="text"
+									th:field="*{developers[__${rowStat.index}__].allocationPercentage}" />
+							</div>
+							<div align="left" class="col-md-3">
+								<button type="submit" th:value="${rowStat.index}"
+									name="removeRow">Remove row</button>
+							</div>
+						</div>
+					</div>
+
+					<div id="cRdeveloperListDiv">
+						<div class="row">
+							<div align="left" class="col-md-3">Resource Name:</div>
+							<div align="left" class="col-md-3">Role:</div>
+							<div align="left" class="col-md-3">Allocation Percentage:</div>
+							<div align="left" class="col-md-3">
+								<button type="submit" name="addRowCR">Add row</button>
+							</div>
+						</div>
+						<div class="row"
+							th:each="row,rowStat : *{changeRequests[0].developers}">
+							<div align="left" class="col-md-3">
+								<select style="width: 140px;"
+									th:field="*{changeRequests[0].developers[__${rowStat.index}__].name}">
+									<option value="">Select One</option>
+									<option value="Vignesh">Vignesh</option>
+									<option value="Abhilash">Abhilash</option>
+								</select>
+							</div>
+							<div align="left" class="col-md-3">
+								<select style="width: 140px;"
+									th:field="*{changeRequests[0].developers[__${rowStat.index}__].role}">
+									<option value="">Select One</option>
+									<option value="Developer">Developer</option>
+									<option value="SPOC">SPOC</option>
+									<option value="Offshore TL">Offshore TL</option>
+									<option value="Onsite TL">Onsite TL</option>
+								</select>
+							</div>
+							<div align="left" class="col-md-3">
+								<input type="text"
+									th:field="*{changeRequests[0].developers[__${rowStat.index}__].allocationPercentage}" />
+							</div>
+							<div align="left" class="col-md-3">
+								<button type="submit" th:value="${rowStat.index}"
+									name="removeRowCR">Remove row</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div align="center" class="col-md-6">
+							<button type="submit" name="submit">Submit</button>
+						</div>
+						<div align="center" class="col-md-6">
+							<input type="reset" value="Reset" />
+						</div>
+
+						<div id="MiscdeveloperListDiv">
+							<div class="row">
+								<div align="left" class="col-md-2">Resource Name:</div>
+								<div align="left" class="col-md-2">Role:</div>
+								<div align="left" class="col-md-3">Month:</div>
+								<div align="left" class="col-md-2">Effort:</div>
+								<div align="left" class="col-md-3">
+									<button type="submit" name="addMiscRow">Add row</button>
+								</div>
+							</div>
+
+
+							<div class="row" th:each="row,rowStat : *{miscDevelopers}">
+								<div align="left" class="col-md-2">
+									<select style="width: 140px;"
+										th:field="*{miscDevelopers[__${rowStat.index}__].name}">
+										<option value="">Select One</option>
+										<option value="Vignesh">Vignesh</option>
+										<option value="Abhilash">Abhilash</option>
+									</select>
+								</div>
+								<div align="left" class="col-md-2">
+									<select style="width: 140px;"
+										th:field="*{miscDevelopers[__${rowStat.index}__].role}">
+										<option value="">Select One</option>
+										<option value="Developer">Developer</option>
+										<option value="SPOC">SPOC</option>
+										<option value="Offshore TL">Offshore TL</option>
+										<option value="Onsite TL">Onsite TL</option>
+									</select>
+								</div>
+								<div align="left" class="col-md-3">
+									<input style="width: 140px;" type="month"
+										th:field="*{miscDevelopers[__${rowStat.index}__].month}" />
+								</div>
+								<div align="left" class="col-md-2">
+									<input style="width: 140px;" type="text"
+										th:field="*{miscDevelopers[__${rowStat.index}__].effort}" />
+								</div>
+								<div align="left" class="col-md-3">
+									<button type="submit" th:value="${rowStat.index}"
+										name="removeMiscRow">Remove row</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="col-lg-2"></div>
+
+
+	</div>
+	<!-- <div class="panel-body">
+				<table class="table table-condensed"
+					style="border-collapse: collapse;">
+
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Project No</th>
+							<th>Project Name</th>
+							<th>Application Type</th>
+							<th>IO Number</th>
+							<th>Category</th>
+							<th>Project Type</th>
+							<th>Developer</th>
+							<th>Implementation Date</th>
+							<th>Effort</th>
+							<th>Team Owning</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr  data-toggle="collapse" 
+							class="accordion-toggle">
+							<td><button class="btn btn-default btn-xs">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</button></td>
+							<td>AD65356</td>
+							<td>AD65356 565</td>
+							<td>Auto</td>
+							<td>98656</td>
+							<td>WaterFall Projects</td>
+							<td>Regular</td>
+							<td>Vignesh</td>
+							<td>2018-03-12</td>
+							<td>650</td>
+							<td>Release 1</td>
+						</tr>
+						<tr th:each="project :${projectListObjects}">
+							
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-condensed"
+					style="border-collapse: collapse;">
+
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Project No</th>
+							<th>Project Name</th>
+							<th>Application Type</th>
+							<th>IO Number</th>
+							<th>Category</th>
+							<th>Project Type</th>
+							<th>Developer</th>
+							<th>Implementation Date</th>
+							<th>Effort</th>
+							<th>Team Owning</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr  data-toggle="collapse" 
+							class="accordion-toggle">
+							<td><button class="btn btn-default btn-xs">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</button></td>
+							<td>AD65356</td>
+							<td>AD65356 565</td>
+							<td>Auto</td>
+							<td>98656</td>
+							<td>WaterFall Projects</td>
+							<td>Regular</td>
+							<td>Abhilash</td>
+							<td>2018-03-12</td>
+							<td>650</td>
+							<td>Release 1</td>
+						</tr>
+						<tr th:each="project :${projectListObjects}">
+							
+						</tr>
+					</tbody>
+				</table>
+			</div> -->
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1" />
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script> -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>WELCOME TO RTB TRACKER</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-condensed"
+					style="border-collapse: collapse;">
+
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Project No</th>
+							<th>Project Name</th>
+							<th>Application Type</th>
+							<th>IO Number</th>
+							<th>Capacity Calculation</th>
+							<th>Project Type</th>
+							<th>Project Status</th>
+							<th>Implementation Date</th>
+							<th>Effort</th>
+							<th>Team Owning</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="project :${projectListObjects}" data-toggle="collapse" th:attr="data-target='#'+${project.projectNo}"
+							class="accordion-toggle">
+							<td><button class="btn btn-default btn-xs">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</button></td>
+							<td th:text="${project.projectNo}"></td>
+							<td th:text="${project.projectName}"></td>
+							<td>hpcloud</td>
+							<td>nova</td>
+							<td>created</td>
+							
+							<td colspan="12" class="hiddenRow"><div
+									class="accordian-body collapse" >
+									<table class="table table-striped" th:id="${project.projectNo}">
+										<thead>
+											<tr>
+												<td><a href="WorkloadURL">Workload link</a></td>
+												<td>Bandwidth: Dandwidth Details</td>
+												<td>OBS Endpoint: end point</td>
+											</tr>
+											<tr>
+												<th>Access Key</th>
+												<th>Secret Key</th>
+												<th>Status</th>
+												<th>Created</th>
+												<th>Expires</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>access-key-1</td>
+												<td>secretKey-1</td>
+												<td>Status</td>
+												<td>some date</td>
+												<td>some date</td>
+												<td><a href="#" class="btn btn-default btn-sm"> <i
+														class="glyphicon glyphicon-cog"></i></a></td>
+											</tr>
+
+
+
+										</tbody>
+									</table>
+
+								</div></td>
+						</tr>
+						<!-- <tr th:each="project :${projectListObjects}">
+							
+						</tr> -->
+						<tr data-toggle="collapse" data-target="#demo2"
+							class="accordion-toggle">
+							<td><button class="btn btn-default btn-xs">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</button></td>
+							<td>OBS Name</td>
+							<td>OBS Description</td>
+							<td>hpcloud</td>
+							<td>nova</td>
+							<td>created</td>
+						</tr>
+						<tr>
+							<td colspan="6" class="hiddenRow"><div id="demo2"
+									class="accordian-body collapse">Demo2</div></td>
+						</tr>
+						<tr data-toggle="collapse" data-target="#demo3"
+							class="accordion-toggle">
+							<td><button class="btn btn-default btn-xs">
+									<span class="glyphicon glyphicon-eye-open"></span>
+								</button></td>
+							<td>OBS Name</td>
+							<td>OBS Description</td>
+							<td>hpcloud</td>
+							<td>nova</td>
+							<td>created</td>
+						</tr>
+						<tr>
+							<td colspan="6" class="hiddenRow"><div id="demo3"
+									class="accordian-body collapse">Demo3</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
